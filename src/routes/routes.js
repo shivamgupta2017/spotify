@@ -8,7 +8,7 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import LoginScreen from '../screens/LoginScreen';
 import MainScreen from '../screens/MainScreen';
-import CallScreen from '../screens/CallScreen';
+import PlayList from '../screens/PlayList';
 import IncomingCallScreen from '../screens/IncomingCallScreen';
 
 import COLOR from '../styles/Color';
@@ -35,13 +35,13 @@ const AppStack = createStackNavigator(
 
 const RootStack = createSwitchNavigator(
     {
-        Login: LoginScreen,
+        // Login: LoginScreen,
         App: AppStack,
-        Call: CallScreen,
+        playlist: PlayList,
         IncomingCall: IncomingCallScreen,
     },
     {
-        initialRouteName: 'Login',
+        initialRouteName: 'App',
     }
 );
 

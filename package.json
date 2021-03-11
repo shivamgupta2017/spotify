@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
+    "run:android": "react-native run-android",
     "postinstall": "sed -i '' 's/\\/Core//g' ./node_modules/react-native-voip-push-notification/RNVoipPushNotification.podspec; sed -i '' 's/\\/Core//g' ./node_modules/react-native-callkeep/RNCallKeep.podspec",
     "test": "jest",
     "lint": "eslint ."
@@ -12,12 +13,14 @@
     "@react-native-community/async-storage": "1.10.0",
     "@react-native-community/masked-view": "0.1.10",
     "@voximplant/react-native-foreground-service": "2.0.0",
+    "axios": "^0.21.1",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-callkeep": "3.0.15",
     "react-native-firebase": "5.6.0",
     "react-native-gesture-handler": "1.6.1",
     "react-native-md5": "1.0.0",
+    "react-native-network-logger": "^1.8.1",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "2.7.0",
     "react-native-vector-icons": "6.6.0",
