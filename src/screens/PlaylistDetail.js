@@ -10,14 +10,16 @@ import {
   SectionList,
   TouchableOpacity,
   Image,
+  BackHandler,
 } from 'react-native';
 
 import COLOR from '../styles/Color';
 import styles from '../styles/Styles';
-import AsyncStorage from '@react-native-community/async-storage';
+import { fetchPlaylistTracks } from './../manager/SpotifyApiManager';
 import COLOR_SCHEME from '../styles/ColorScheme';
 
 
+const handleBackButton = () => true;
 
 const PlaylistDetail = (props) => {
   const [featuredPlayList, setFeaturedPlayList] = useState([{ data: [] }]);
@@ -46,28 +48,19 @@ const PlaylistDetail = (props) => {
   );
 
   useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackButton);
     const params = props.navigation.state.params;
     const playlistId = params.id;
 
-    AsyncStorage.getItem('@userToken').then((token) => {
-      fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'accept': 'application/json',
-          Authorization: 'Bearer ' + token,
-        },
-      }).then((res) => res.json()).then((response) => {
-        console.log('>', response);
-        if (response) {
-          setFeaturedPlayList([{ data: response.items }]);
-        }
-      }).catch((err) => {
-        console.log('error while fetching playlist .....', err);
-      });
-    });
-
-
+    try {
+      (async () => {
+        const response = await fetchPlaylistTracks(playlistId);
+        setFeaturedPlayList([{ data: response.items }]);
+      })();
+    } catch (error) {
+      console.error('error while fetching track')
+    }
+    return () => BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
   }, [props.navigation.state.params]);
 
 

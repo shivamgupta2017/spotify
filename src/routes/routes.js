@@ -6,7 +6,6 @@
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import LoginScreen from '../screens/LoginScreen';
 import MainScreen from '../screens/MainScreen';
 import PlayList from '../screens/PlayList';
 import PlaylistDetail from '../screens/PlaylistDetail';

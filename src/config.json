@@ -1,0 +1,7 @@
+{
+  "clientId": "f38780dd02ef417ba5995728bf36ff94",
+  "clientSecret": "0bebd4759367459fa85b4a6af4461947",
+  "encodedIdSecret": "Basic ZjM4NzgwZGQwMmVmNDE3YmE1OTk1NzI4YmYzNmZmOTQ6MGJlYmQ0NzU5MzY3NDU5ZmE4NWI0YTZhZjQ0NjE5NDc=",
+  "BASE_AUTH_URL": "https://accounts.spotify.com/",
+  "BASE_URL": "https://api.spotify.com/"
+}

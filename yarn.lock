@@ -5926,11 +5926,6 @@
 "react-native-voip-push-notification@YuliaGrigorieva/react-native-voip-push-notification#620e2aaf3361c9dd67b49f1d88e5915931c4ba42":
   "resolved" "git+ssh://git@github.com/YuliaGrigorieva/react-native-voip-push-notification.git#620e2aaf3361c9dd67b49f1d88e5915931c4ba42"
 
-"react-native-voximplant@1.23.0":
-  "integrity" "sha512-I95EVlhbg3DZgjIILJVOvLq1I23FCqFsRg7dlLNRqYTCngWqJAYveqe/1z2r6NXvziY90Eouo3Gq4SgvWwpNsg=="
-  "resolved" "https://registry.npmjs.org/react-native-voximplant/-/react-native-voximplant-1.23.0.tgz"
-  "version" "1.23.0"
-
 "react-native@0.62.2":
   "integrity" "sha512-gADZZ3jcm2WFTjh8CCBCbl5wRSbdxqZGd+8UpNwLQFgrkp/uHorwAhLNqcd4+fHmADgPBltNL0uR1Vhv47zcOw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.62.2.tgz"

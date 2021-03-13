@@ -7,17 +7,23 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import styles from '../styles/Styles';
 import COLOR_SCHEME from '../styles/ColorScheme';
 import COLOR from '../styles/Color';
 
+const handleBackButton = () => true;
+
 const SongDetails = (props) => {
   const [songDetail, setSongDetail] = useState(null);
 
   useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+
     const params = props.navigation.state.params;
     setSongDetail(params.details.track);
+    return () => BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
   }, [props.navigation.state.params]);
 
   return (
@@ -47,7 +53,7 @@ const SongDetails = (props) => {
 
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export default SongDetails;

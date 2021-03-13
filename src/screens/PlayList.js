@@ -10,18 +10,19 @@ import {
 	TouchableOpacity,
 	View,
 	SafeAreaView,
+	BackHandler,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-
 import COLOR_SCHEME from '../styles/ColorScheme';
 import COLOR from '../styles/Color';
 import styles from '../styles/Styles';
+import { fetchPlaylist } from '../manager/SpotifyApiManager';
+
+const handleBackButton = () => true;
 
 const PlayList = (props) => {
 
 	const [featuredPlayList, setFeaturedPlayList] = useState([{ data: [] }]);
 	const goToPlayListDetailSection = (id) => {
-
 		props.navigation.dispatch(props.navigation.navigate({
 			routeName: 'playlistDetail',
 			params: { id },
@@ -40,24 +41,19 @@ const PlayList = (props) => {
 	);
 
 	useEffect(() => {
-		AsyncStorage.getItem('@userToken')
-			.then((token) => {
-				console.log('token >', token);
+		BackHandler.addEventListener('hardwareBackPress', handleBackButton);
 
-				fetch('https://api.spotify.com/v1/browse/featured-playlists?country=IN&locale=en-IN', {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						'accept': 'application/json',
-						Authorization: 'Bearer ' + token,
-					},
-				}).then((res) => res.json()).then((response) => {
-					setFeaturedPlayList([{ data: response.playlists.items }]);
-				}).catch((err) => {
-					console.log('error while fetching playlist .....', err);
-				});
+		fetchPlaylist().then((response) => {
+			console.log('response >', response);
+			if (response.error) {
+				return;
+			}
+			setFeaturedPlayList([{ data: response.playlists.items }]);
+		}).catch((err) => {
+			console.error('error ', err);
+		});
 
-			}).catch((err) => { console.log(err); });
+		return () => BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
 	}, []);
 	return (
 		<SafeAreaView style={styles.safearea}>
