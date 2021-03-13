@@ -97,7 +97,7 @@ export default StyleSheet.create({
     fontSize: 22,
   },
   item: {
-    backgroundColor: '#4fc3f7',
+    backgroundColor: '#f9c2ff',
     padding: 10,
     marginVertical: 5,
     // marginHorizontal: 16,
