@@ -1,44 +1,3 @@
-# React Native Voximplant Demo Application
-
-The demo application that uses `react-native-voximplant` and [Voximplant cloud platform](http://voximplant.com) for making/receiving audio/video calls.
-
-## Getting started
-
-To get started, you'll need to [register](https://manage.voximplant.com/auth/sign_up) a free Voximplant developer account.
-
-You'll need the following:
-* Voximplant application
-* two Voximplant users
-* VoxEngine scenario
-* routing setup
-* push certificates:
-  * ios: VoIP services certificate. Follow [this tutorial](https://voximplant.com/docs/introduction/integration/adding_sdks/push_notifications/ios_sdk) to upload the certificate to the Voximplant Control Panel
-  * android: Firebase certificate. Follow [this tutorial](https://voximplant.com/docs/introduction/integration/adding_sdks/push_notifications/android_sdk) to upload the certificate to the Voximplant Control Panel
-
-### Automatic
-We've implemented a special template to enable you to quickly use the demo – just 
-install [SDK tutorial](https://manage.voximplant.com/marketplace/sdk_tutorial) from our marketplace.
-
-### Manual
-
-You can set up it manually using our [Getting started](https://voximplant.com/docs/introduction) page and tutorials
-
-#### VoxEngine scenario example:
-  ```
-  require(Modules.PushService);
-  VoxEngine.addEventListener(AppEvents.CallAlerting, (e) => {
-  const newCall = VoxEngine.callUserDirect(
-    e.call, 
-    e.destination,
-    e.callerid,
-    e.displayName,
-    null
-  );
-  VoxEngine.easyProcess(e.call, newCall, ()=>{}, true);
-  });
-  ```
-
-
 ## Build and run the app
 
 1. Install React Native as described at [https://facebook.github.io/react-native/docs/getting-started.html#content](https://facebook.github.io/react-native/docs/getting-started.html#content)
@@ -63,12 +22,4 @@ You can set up it manually using our [Getting started](https://voximplant.com/do
 4. It is recommended to run `react-native start` command from root project directory.
 5. Run your project from XCode (`Cmd+R`) for iOS, or use `react-native run-android` to run your project on Android.
 
-## Useful links
-Official guides:
-- [Installing React Native SDK guide](https://voximplant.com/docs/introduction/integration/adding_sdks/installing/react_native_sdk)
 
-## Have a question
-
-- contact us via `support@voximplant.com`
-- create an issue
-- join our developer [community](https://discord.gg/sfCbT5u)
